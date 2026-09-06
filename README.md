@@ -1,25 +1,12 @@
-# Parametric Equation Solver & Curve Fitting
+##How to Run:
+1.pip install numpy,pandas,Scipy.
+2.python flam.py
+3.then if u want graph paste output here https://www.desmos.com/calculator/rfj91yrxob
+##Output:
+  Estimated Parameters::
+theta : 0.523598 rad (30.0000 deg / ~ 30 deg)
+M     : 0.030000 (~ 0.03)
+X     : 54.999998 (~ 55.0)
 
-A Python script utilizing SciPy's Differential Evolution and L1 loss to estimate unknown parameters ($\theta$, $M$, $X$) of a 2D transformed parametric curve from sampled dataset points.
-
-## Problem Description
-This project solves for unknown variables in the following parametric equation of a curve:
-$$ x = t * \cos(\theta) - e^{M|t|} * \sin(0.3t)\sin(\theta) + X $$
-$$ y = 42 + t * \sin(\theta) + e^{M|t|} * \sin(0.3t)\cos(\theta) $$
-
-Where the constraints are:
-* $0^\circ < \theta < 50^\circ$
-* $-0.05 < M < 0.05$
-* $0 < X < 100$
-* $6 < t < 60$
-
-## Methodology
-The script recognizes the equations as a rotated and translated version of a base parametric curve. By applying an inverse transformation (rotation and translation) to the provided $(x, y)$ dataset, it isolates the transverse displacement. 
-
-It then uses **Differential Evolution** (a robust global optimizer) to minimize the **L1 distance (Mean Absolute Error)** between the expected and actual transverse displacement, reliably recovering the exact parameters.
-
-## Usage
-1. Place your dataset in `xy_data.csv` with columns `x` and `y`.
-2. Install dependencies: `pip install numpy pandas scipy`
-3. Run the script: `python flam.py`
-4. The script will output the optimal parameters and generate a LaTeX string ready to be pasted into [Desmos](https://www.desmos.com/calculator) for plotting.
+  Desmos Link:
+\left(t*\cos(0.5236)-e^{0.0300\left|t\right|} \cdot \sin(0.3t)\sin(0.5236)+55.0000, 42+t*\sin(0.5236)+e^{0.0300\left|t\right|} \cdot \sin(0.3t)\cos(0.5236)\right)
